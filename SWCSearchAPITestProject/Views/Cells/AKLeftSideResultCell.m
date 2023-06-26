@@ -1,0 +1,34 @@
+//
+//  AKLeftSideResultCell.m
+//  SWCSearchAPITestProject
+//
+//  Created by Кирилл Тарасов on 25.06.2023.
+//
+
+#import "AKLeftSideResultCell.h"
+
+@implementation AKLeftSideResultCell
+
+
+-(void)buildView
+{
+    
+    [super buildView];
+
+    
+    NSDictionary *viewsDict = @{@"mIV":[self iconIV],@"mLbl":[self titleLbl], @"stLbl":[self subtitleLbl]};
+    [[self contentView]addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(15)-[mIV(==92)]" options:0 metrics:nil views:viewsDict]];
+    [[self contentView]addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(15)-[mIV(==92)]-(15)-[mLbl]-(>=8)-|" options:0 metrics:nil views:viewsDict]];
+    
+    [[self contentView]addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mLbl]-(4)-[stLbl]" options:0 metrics:nil views:viewsDict]];
+    [[self contentView]addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[stLbl]-(>=8)-|" options:0 metrics:nil views:viewsDict]];
+    
+
+    [[self contentView]addConstraint:[NSLayoutConstraint constraintWithItem:[self titleLbl] attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[self iconIV] attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f]];
+    
+    [[self contentView]addConstraint:[NSLayoutConstraint constraintWithItem:[self subtitleLbl] attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:[self titleLbl] attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f]];
+    
+}
+
+
+@end
